@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="slop.miho.patchfox">
+
+    <uses-sdk android:minSdkVersion="31" android:targetSdkVersion="35" />
+
+    <application
+        android:label="@string/app_name"
+        android:allowBackup="false">
+
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data android:name="xposeddescription" android:value="@string/module_description" />
+        <meta-data android:name="xposedminversion" android:value="93" />
+        <meta-data android:name="xposedscope" android:resource="@array/xposed_scope" />
+
+        <!-- No launcher intent-filter: the module is reachable from the browser's own
+             settings screen and from the launcher long-press shortcut published by the
+             hook. Still exported so the browser can start it directly. -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/SettingsTheme">
+        </activity>
+
+        <!-- Settings channel for the hooked apps (standard IPC, no XSharedPreferences). -->
+        <provider
+            android:name=".PrefsProvider"
+            android:authorities="slop.miho.patchfox.prefs"
+            android:exported="true" />
+    </application>
+</manifest>

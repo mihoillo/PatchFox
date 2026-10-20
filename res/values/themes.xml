@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- No-action-bar variant: edge-to-edge targetSdk 35 otherwise overlays the bar
+         on top of the content and eats its touches. -->
+    <style name="SettingsTheme" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>
